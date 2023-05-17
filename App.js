@@ -1,15 +1,30 @@
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState("");
+
+  const goalInputHandler = (text) => {
+    setEnteredGoalText(text);
+  };
+
+  const addGoalHandler = () => {
+    console.log(enteredGoalText);
+  };
+
   return (
     <View style={styles.appContainer}>
-      <View>
-        <TextInput style={styles.txtField} placeholder="Your Course Goal" />
-        <Button title="Add GOAL" />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your Course Goal"
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+        <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
-      <View>
-       <Text style={styles.text}>List of Goals !</Text>
+      <View style={styles.goalContainer}>
+        <Text>List of Goals!</Text>
       </View>
     </View>
   );
@@ -17,13 +32,24 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 20
+    flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
-  txtField: {
-    marginTop: 20,
-    marginBottom: 10,
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
   },
-  text: {
-    marginTop:10,
+  textInput: {
+    width: "70%",
+    marginRight: 8,
+    padding: 8,
+  },
+  goalContainer: {
+    flex: 4,
   },
 });
