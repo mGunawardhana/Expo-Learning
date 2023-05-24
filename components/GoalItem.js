@@ -16,6 +16,14 @@ const GoalItem = ({ goal }) => {
   );
 };
 
+const GoalItem = ({ goal }) => {
+  return (
+    <View style={styles.goalItem}>
+      <Text style={styles.goal}>{goal}</Text>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   goalContainer: {
     flex: 4,
